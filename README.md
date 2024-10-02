@@ -24,7 +24,7 @@
 
 <p>It is a collection of values, the relationships between them, and the operations that can be applied to them.</p>
 
-<b>Data Structures Specialize in:</b
+<b>Data Structures Specialize in:</b>
   - Retrieving the large value from a collection
   - Instant access to elements
   - Representing hierarchy
