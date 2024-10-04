@@ -10,5 +10,6 @@
   - O(1)
   - O(n)
   - O(n)^2
+  - O(logn)
 
 <p align = "justify">Computational complexity measures the number of resources an algorithm requires to run. In theory, “Big O” is the most used notation.</p>
