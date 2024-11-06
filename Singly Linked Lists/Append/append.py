@@ -21,8 +21,8 @@ class SinglyLinkedList:
             self.head = self.tail = new_node
 
         else:
-
             self.tail.next = new_node
+            new_node.previous = self.tail
             self.tail = new_node
         # Increment the list once the new node has been assigned.
         self._length += 1
