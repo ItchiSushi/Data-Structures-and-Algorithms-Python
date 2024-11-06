@@ -15,7 +15,6 @@ class SinglyLinkedList:
             self.head = self.tail = new_node
         else:
             new_node.next = self.head
-            self.head.previous = new_node
             self.head = new_node
         self._length += 1
         return self
@@ -26,6 +25,6 @@ my_list.prepend(7)
 my_list.prepend(15)
 my_list.prepend(13)
 print(my_list)
-print(my_list.head)
-print(my_list.tail)
+print(my_list.head.value)
+print(my_list.tail.value)
 print(my_list._length)
