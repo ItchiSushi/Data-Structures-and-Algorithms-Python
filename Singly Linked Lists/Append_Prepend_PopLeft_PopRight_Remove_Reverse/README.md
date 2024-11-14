@@ -47,3 +47,12 @@
 
 - Time complexity for this function is O(n)
 - Space Complexity is O(1)
+
+<h1>Reverse</h1>
+
+<h2>Description</h2>
+
+<p>This function, we look at taking a linked list and reversing the order of the list. Starting at the head, then using the next property to reverse the order of the nodes.</p>
+
+- Time complexity for this function is O(n)
+- Space Complexity is O(1)
