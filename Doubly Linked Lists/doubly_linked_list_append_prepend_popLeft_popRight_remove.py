@@ -1,18 +1,17 @@
-# Adding new elements at the end of the list
-
+# Everything a node class will need
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
+        self.previous = None
 
-class SinglyLinkedList:
+# Everything a Doubly Linked List will need to get started on functionality
+class DoublyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
         self._length = 0
-    # append function
-    # Time Complexity: O(1)
-    # Space Complexity: O(1)
+    #Append
     def append(self, value):
         # Create a new node variable along with the node instance that will contain the value.
         new_node = Node(value)
@@ -23,47 +22,49 @@ class SinglyLinkedList:
 
         else:
             self.tail.next = new_node
+            new_node.previous = self.tail
             self.tail = new_node
         # Increment the list once the new node has been assigned.
         self._length += 1
         return self
-    # prepend function
+    # Prepend
     def prepend(self, value):
         new_node = Node(value)
         if not self._length:
             self.head = self.tail = new_node
         else:
             new_node.next = self.head
+            new_node.previous = self.tail
             self.head = new_node
         self._length += 1
         return self
-    # pop_left function
+    # Pop Left
     def pop_left(self):
         if not self._length:
             raise Exception("List is empty")
-        else:
-            former_head = self.head
-            self.head = former_head.next
-            former_head.next = None
-        self._length -= 1
-        if not self._length:
-            self.tail = None
-    # pop_right function
-    def pop_right(self):
-        if not self._length:
-            raise Exception("list is empty")
-        tail_value = self.tail.value
+        former_head = self.head
         if self._length == 1:
             self.head = self.tail = None
         else:
-            temp_node = self.head
-            while temp_node.next is not self.tail:
-                temp_node = temp_node.next
-            self.tail = temp_node
-            self.tail.next = None
+            self.head = former_head.next
+            former_head.next = None
+        self.head.previous = None
         self._length -= 1
-        return tail_value
-    # remove function
+        return former_head.value
+    # Pop Right
+    def pop_right(self):
+        if not self._length:
+            raise Exception("List is empty")
+        former_tail = self.tail
+        if self._length == 1:
+            self.head = self.tail = None
+        else:
+            self.tail = former_tail.previous
+            former_tail.previous = None
+            former_tail.next = None
+        self._length -= 1
+        return former_tail.value
+    # Remove
     def remove(self,value):
         if not self._length:
             raise Exception("List is empty!")
@@ -75,21 +76,12 @@ class SinglyLinkedList:
             previous_node = current_node
             current_node = current_node.next
         if current_node is None:
-            previous_node.next = current_node.next
-            current_node.next = None
-            self._length -= 1
-            return current_node.value
-
-    def reverse(self):
-        if self._length < 2:
-            return self
-        left_node = None
-        middle_node = self.head
-        while middle_node is not None:
-            right_node = middle_node.next
-            middle_node.next = left_node
-            left_node = middle_node
-            middle_node = right_node
-        self.head, self.tail = self.tail, self.head
-        return self
-
+            raise  ValueError("item not in list")
+        if current_node.next is None:
+            return self.pop_right()
+        previous_node.next.previous = current_node
+        previous_node.next = current_node.next
+        current_node.next = None
+        current_node.previous = None
+        self._length -= 1
+        return current_node.value
