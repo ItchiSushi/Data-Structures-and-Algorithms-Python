@@ -2,7 +2,7 @@
 
 <h2>Description</h2>
 
-<p align = "justify">In this repository, I would like to showcase my comprehensive understanding of Data Structures and Algorithms. I followed and worked gradually to complete 11 hours and 30 minutes of an in-depth training course on DSA using Udemy.</p>
+<p align = "justify">In this repository, I would like to showcase my comprehensive understanding of Data Structures and Algorithms. I am currently following a 11 hours and 30 minutes in-depth training course on DSA vusing Udemy.</p>
 
 <h2>What I Know About DSA</h2>
 
